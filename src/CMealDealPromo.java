@@ -42,7 +42,12 @@ public class CMealDealPromo implements CDiscount
         // Determine the least occurrences among the items in the combination
         for (char sku : m_skuCombination) 
         {
-            if (itemsMap.getOrDefault(sku, 0) < leastOccurrences) 
+            if (!itemsMap.containsKey(sku))
+            {
+                leastOccurrences = 0;
+            }
+
+            else if (itemsMap.getOrDefault(sku, 0) < leastOccurrences)
             {
                 leastOccurrences = itemsMap.get(sku);
             }

@@ -47,5 +47,7 @@ public class Main {
         System.out.println("Price:     " + checkout.calculatePriceWithoutDiscount() + "£");
         System.out.println("Discount:  " + checkout.calculateDiscount() + "£");
         System.out.println("To Pay:    " + (checkout.calculatePriceWithoutDiscount() - checkout.calculateDiscount()) + "£");
+        System.out.println();
+        System.out.println();
     }
 }
