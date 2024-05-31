@@ -14,7 +14,7 @@ public class CMealDealPromo implements CDiscount
     }
 
     @Override
-    public float getDiscount(List<CItem> items) 
+    public float getDiscount(List<CItem> f_items) 
     {
         int                     leastOccurrences     = Integer.MAX_VALUE;
         float                   priceWithoutDiscount = 0;
@@ -23,7 +23,7 @@ public class CMealDealPromo implements CDiscount
         // Calculate price without discount for the combination
         for (char sku : m_skuCombination) 
         {
-            for (CItem item : items) 
+            for (CItem item : f_items) 
             {
                 if (sku == item.getSKU()) 
                 {
@@ -34,7 +34,7 @@ public class CMealDealPromo implements CDiscount
         }
 
         // Count number of occurrences for each item in the checkout list
-        for (CItem item : items) 
+        for (CItem item : f_items) 
         {
             itemsMap.put(item.getSKU(), itemsMap.getOrDefault(item.getSKU(), 0) + 1);
         }
@@ -48,7 +48,6 @@ public class CMealDealPromo implements CDiscount
             }
         }
 
-        // Calculate the discount
         float discount = (priceWithoutDiscount - m_promoPrice) * leastOccurrences;
         
         return discount;
